@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PDF章分割ツール</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <h1>PDF章分割ツール</h1>
+
+  <div id="drop-zone" class="drop-zone">
+    ここにPDFをドラッグ＆ドロップ
+    <div class="muted" style="margin-top:8px;">（章プレビュー → ページカードで確認 → 分割）</div>
+  </div>
+
+  <div class="actions">
+    <button id="split-btn" disabled>分割してZIPを作る</button>
+    <button id="download-btn" disabled>ZIPをダウンロード</button>
+    <button id="reset-btn" disabled>リセット</button>
+  </div>
+
+  <div id="status"></div>
+
+  <div id="preview" class="preview" style="display:none;">
+    <h2>章プレビュー（クリックでページカード表示）</h2>
+    <div class="muted" id="preview-file"></div>
+    <div style="height:10px;"></div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:90px;">章</th>
+          <th>タイトル</th>
+          <th style="width:90px;">開始</th>
+          <th style="width:90px;">終了</th>
+        </tr>
+      </thead>
+      <tbody id="preview-body"></tbody>
+    </table>
+  </div>
+
+  <!-- modal -->
+  <div id="modal-backdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title"></div>
+        <button id="modal-close">閉じる</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" alt="page preview" />
+      </div>
+      <div class="modal-footer">
+        <button id="m-first">先頭</button>
+        <button id="m-prev">前へ</button>
+        <button id="m-next">次へ</button>
+        <button id="m-last">最後</button>
+        <span class="spacer"></span>
+        <span id="m-indicator" class="page-indicator"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
